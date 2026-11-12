@@ -39,6 +39,7 @@
 25. [Query 25: Sauce Labs, Cypress OSS & Cross-Browser Testing Architecture Audit](#query-25-sauce-labs-cypress-oss--cross-browser-testing-architecture-audit)
 26. [Query 26: Where Cypress OSS Runs — GitHub Actions Hosted Runner vs. External Cloud](#query-26-where-cypress-oss-runs--github-actions-hosted-runner-vs-external-cloud)
 27. [Query 27: Deep Double-Check of `angular` Sheet & Categorization as `Infra` vs `Tool`](#query-27-deep-double-check-of-angular-sheet--categorization-as-infra-vs-tool)
+28. [Query 28: Terminology Replacement (`Quest` -> `Ftech`) & Workflow Repository Name Conditions Update](#query-28-terminology-replacement-quest---ftech--workflow-repository-name-conditions-update)
 
 ---
 
@@ -3968,4 +3969,65 @@ Following the user's explicit directive:
   * Column 21 (`Functional Category`) preserves the deep operational classification.
 * **Procurement Verdict**: **`$0.00 / year`** for enterprise fork maintenance.
 * **Corporate Legal Verdict**: **`100% Permissible`** under Apache-2.0 / MIT / BSD licenses.
+
+---
+
+## Query 28: Terminology Replacement (`Quest` -> `Ftech`) & Workflow Repository Name Conditions Update
+
+<details>
+<summary><strong>Original User Query (Click to expand)</strong></summary>
+
+```text
+if excel files or any files contains the word quest please change that to Ftech. then correct the repo name check condition in teh work flow yml files.
+```
+
+</details>
+
+### 1. Terminology Scan & Replacement (`Quest` -> `Ftech`)
+
+A comprehensive recursive scan of all files across the repository was conducted:
+* **All Excel Files Audited**:
+  * [`workflow-fixes/data1.xlsx`](file:///c:/projects/angular/workflow-fixes/data1.xlsx)
+  * [`workflow-fixes/angular_pipeline_result.xlsx`](file:///c:/projects/angular/workflow-fixes/angular_pipeline_result.xlsx)
+  * [`workflow-fixes/angular_pipeline_result_populated.xlsx`](file:///c:/projects/angular/workflow-fixes/angular_pipeline_result_populated.xlsx)
+  * [`workflow-fixes/infra_tool_estimate.xlsx`](file:///c:/projects/angular/workflow-fixes/infra_tool_estimate.xlsx)
+* **Finding**: The word `Quest` occurred exactly once in [`workflow-fixes/infra_tool_estimate.xlsx`](file:///c:/projects/angular/workflow-fixes/infra_tool_estimate.xlsx) on `Sheet3`, cell `F16` (Row 16, Col 6):
+  * *Original*: `Includes a standalone signing service. If the customer or Quest corporate signing service is available, reduce the total to $364/year...`
+  * *Updated*: `Includes a standalone signing service. If the customer or Ftech corporate signing service is available, reduce the total to $364/year...`
+* **Verification**: Zero occurrences of the word `quest` (as a whole word) remain in any file across the repository.
+
+---
+
+### 2. Workflow Repository Name Check Conditions (`sajuptpm/angular1`)
+
+Following the creation of the dedicated repository [`https://github.com/sajuptpm/angular1`](https://github.com/sajuptpm/angular1), all 10 dual-mode GitHub Actions workflows under [`.github/workflows/`](file:///c:/projects/angular/.github/workflows) were updated so their mode resolution logic dynamically recognizes `sajuptpm/angular1`:
+
+* **Workflows Updated (24 check instances across 10 files)**:
+  1. [`.github/workflows/adev-preview-build.yml`](file:///c:/projects/angular/.github/workflows/adev-preview-build.yml)
+  2. [`.github/workflows/assistant-to-the-branch-manager.yml`](file:///c:/projects/angular/.github/workflows/assistant-to-the-branch-manager.yml)
+  3. [`.github/workflows/benchmark-compare.yml`](file:///c:/projects/angular/.github/workflows/benchmark-compare.yml)
+  4. [`.github/workflows/ci.yml`](file:///c:/projects/angular/.github/workflows/ci.yml) (8 individual CI jobs)
+  5. [`.github/workflows/cross-repo-adev-docs.yml`](file:///c:/projects/angular/.github/workflows/cross-repo-adev-docs.yml)
+  6. [`.github/workflows/dev-infra.yml`](file:///c:/projects/angular/.github/workflows/dev-infra.yml) (3 jobs)
+  7. [`.github/workflows/google-internal-tests.yml`](file:///c:/projects/angular/.github/workflows/google-internal-tests.yml)
+  8. [`.github/workflows/perf.yml`](file:///c:/projects/angular/.github/workflows/perf.yml)
+  9. [`.github/workflows/pr.yml`](file:///c:/projects/angular/.github/workflows/pr.yml) (6 jobs)
+  10. [`.github/workflows/release.yml`](file:///c:/projects/angular/.github/workflows/release.yml)
+
+* **Updated Condition Syntax**:
+  ```bash
+  # Example from release.yml
+  if [ -n "$WOMBOT_SECRET" ] && [ -n "$ROBOT_SECRET" ] && ([ "${{ github.repository }}" = "angular/angular" ] || [ "${{ github.repository }}" = "sajuptpm/angular1" ]); then
+    MODE="original"
+  else
+    MODE="native"
+  fi
+  ```
+
+* **Automation Scripts Updated**:
+  * [`workflow-fixes/scripts/trigger-workflow.py`](file:///c:/projects/angular/workflow-fixes/scripts/trigger-workflow.py)
+  * [`workflow-fixes/scripts/check-runs.py`](file:///c:/projects/angular/workflow-fixes/scripts/check-runs.py)
+  * [`workflow-fixes/scripts/check-run-jobs.py`](file:///c:/projects/angular/workflow-fixes/scripts/check-run-jobs.py)
+  * [`workflow-fixes/scripts/cancel-queued-runs.py`](file:///c:/projects/angular/workflow-fixes/scripts/cancel-queued-runs.py)
+  * All scripts now auto-detect remote `angular1` (and `origin`) and default to target repository `sajuptpm/angular1`.
 

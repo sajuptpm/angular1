@@ -47,7 +47,7 @@ jobs:
         run: |
           MODE="${INPUT_MODE:-${VAR_MODE:-auto}}"
           if [ "$MODE" = "auto" ]; then
-            if [ "${{ github.repository }}" = "angular/angular" ]; then
+            if [ -n "$GCP_WIF_PROVIDER" ] && ([ "${{ github.repository }}" = "angular/angular" ] || [ "${{ github.repository }}" = "sajuptpm/angular1" ]); then
               MODE="original"
             else
               MODE="native"

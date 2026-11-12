@@ -96,7 +96,7 @@ jobs:
         run: |
           MODE="${INPUT_MODE:-${VAR_MODE:-auto}}"
           if [ "$MODE" = "auto" ]; then
-            if [ -n "$RBE_SECRET" ] && [ "${{ github.repository }}" = "angular/angular" ]; then
+            if [ -n "$RBE_SECRET" ] && ([ "${{ github.repository }}" = "angular/angular" ] || [ "${{ github.repository }}" = "sajuptpm/angular1" ]); then
               MODE="original"
             else
               MODE="native"
@@ -143,7 +143,7 @@ jobs:
         run: |
           MODE="${INPUT_MODE:-${VAR_MODE:-auto}}"
           if [ "$MODE" = "auto" ]; then
-            if [ -n "$RBE_SECRET" ] && [ "${{ github.repository }}" = "angular/angular" ]; then
+            if [ -n "$RBE_SECRET" ] && ([ "${{ github.repository }}" = "angular/angular" ] || [ "${{ github.repository }}" = "sajuptpm/angular1" ]); then
               MODE="original"
             else
               MODE="native"
@@ -178,7 +178,7 @@ jobs:
         run: |
           MODE="${INPUT_MODE:-${VAR_MODE:-auto}}"
           if [ "$MODE" = "auto" ]; then
-            if [ -n "$RBE_SECRET" ] && [ "${{ github.repository }}" = "angular/angular" ]; then
+            if [ -n "$RBE_SECRET" ] && ([ "${{ github.repository }}" = "angular/angular" ] || [ "${{ github.repository }}" = "sajuptpm/angular1" ]); then
               MODE="original"
             else
               MODE="native"
@@ -213,7 +213,7 @@ jobs:
         run: |
           MODE="${INPUT_MODE:-${VAR_MODE:-auto}}"
           if [ "$MODE" = "auto" ]; then
-            if [ -n "$RBE_SECRET" ] && [ "${{ github.repository }}" = "angular/angular" ]; then
+            if [ -n "$RBE_SECRET" ] && ([ "${{ github.repository }}" = "angular/angular" ] || [ "${{ github.repository }}" = "sajuptpm/angular1" ]); then
               MODE="original"
             else
               MODE="native"
@@ -255,7 +255,7 @@ jobs:
         run: |
           MODE="${INPUT_MODE:-${VAR_MODE:-auto}}"
           if [ "$MODE" = "auto" ]; then
-            if [ -n "$RBE_SECRET" ] && [ "${{ github.repository }}" = "angular/angular" ]; then
+            if [ -n "$RBE_SECRET" ] && ([ "${{ github.repository }}" = "angular/angular" ] || [ "${{ github.repository }}" = "sajuptpm/angular1" ]); then
               MODE="original"
             else
               MODE="native"
@@ -290,7 +290,7 @@ jobs:
         run: |
           MODE="${INPUT_MODE:-${VAR_MODE:-auto}}"
           if [ "$MODE" = "auto" ]; then
-            if [ -n "$SNAPSHOT_TOKEN" ] && [ "${{ github.repository }}" = "angular/angular" ]; then
+            if [ -n "$SNAPSHOT_TOKEN" ] && ([ "${{ github.repository }}" = "angular/angular" ] || [ "${{ github.repository }}" = "sajuptpm/angular1" ]); then
               MODE="original"
             else
               MODE="native"
@@ -340,7 +340,7 @@ jobs:
         run: |
           MODE="${INPUT_MODE:-${VAR_MODE:-auto}}"
           if [ "$MODE" = "auto" ]; then
-            if [ -n "$RBE_SECRET" ] && [ "${{ github.repository }}" = "angular/angular" ]; then
+            if [ -n "$RBE_SECRET" ] && ([ "${{ github.repository }}" = "angular/angular" ] || [ "${{ github.repository }}" = "sajuptpm/angular1" ]); then
               MODE="original"
             else
               MODE="native"
@@ -402,7 +402,7 @@ jobs:
         run: |
           MODE="${INPUT_MODE:-${VAR_MODE:-auto}}"
           if [ "$MODE" = "auto" ]; then
-            if [ -n "$DEPLOY_KEY" ] && [ "${{ github.repository }}" = "angular/angular" ]; then
+            if [ -n "$DEPLOY_KEY" ] && ([ "${{ github.repository }}" = "angular/angular" ] || [ "${{ github.repository }}" = "sajuptpm/angular1" ]); then
               MODE="original"
             else
               MODE="native"

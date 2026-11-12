@@ -59,7 +59,7 @@ jobs:
         run: |
           MODE="${INPUT_MODE:-${VAR_MODE:-auto}}"
           if [ "$MODE" = "auto" ]; then
-            if [ "${{ github.repository }}" = "angular/angular" ] || [ -n "$RBE_SECRET" ]; then
+            if ([ "${{ github.repository }}" = "angular/angular" ] || [ "${{ github.repository }}" = "sajuptpm/angular1" ]) && [ -n "$RBE_SECRET" ]; then
               MODE="original"
             else
               MODE="native"

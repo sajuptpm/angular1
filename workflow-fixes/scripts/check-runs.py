@@ -35,19 +35,20 @@ import urllib.request
 
 
 def get_git_repo():
-    """Extract owner/repo from git remote origin."""
-    try:
-        out = subprocess.check_output(
-            ["git", "remote", "get-url", "origin"],
-            stderr=subprocess.DEVNULL,
-            universal_newlines=True,
-        ).strip()
-        match = re.search(r"github\.com[:/]([^/]+)/([^/\.]+?)(?:\.git)?$", out)
-        if match:
-            return f"{match.group(1)}/{match.group(2)}"
-    except Exception:
-        pass
-    return "sajuptpm/angular"
+    """Extract owner/repo from active git remote."""
+    for remote in ["angular1", "origin"]:
+        try:
+            out = subprocess.check_output(
+                ["git", "remote", "get-url", remote],
+                stderr=subprocess.DEVNULL,
+                universal_newlines=True,
+            ).strip()
+            match = re.search(r"github\.com[:/]([^/]+)/([^/\.]+?)(?:\.git)?$", out)
+            if match:
+                return f"{match.group(1)}/{match.group(2)}"
+        except Exception:
+            pass
+    return "sajuptpm/angular1"
 
 
 def get_auth_token():
